@@ -1,12 +1,12 @@
-# 🔐 ESP32 Secure IoT Sensor Node — AES-256 + MQTT
+#  ESP32 Secure IoT Sensor Node — AES-256 + MQTT
 
 A MicroPython-based IoT project running on an **ESP32** that reads temperature and humidity from a **DHT22** sensor, encrypts the data using **AES-256-CBC** encryption, displays live readings on an **SSD1306 OLED screen**, and publishes the encrypted payload over **MQTT**.
 
-> 🧪 Fully simulated on [Wokwi](https://wokwi.com/projects/461731017344964609) — no hardware required to run it.
+>  Fully simulated on [Wokwi](https://wokwi.com/projects/461731017344964609) — no hardware required to run it.
 
 ---
 
-## 📸 Demo
+##  Demo
 
 ### Wokwi Simulation
 <img width="740" height="474" alt="Wokwi simulation" src="https://github.com/user-attachments/assets/f57d3236-88da-4f20-bfb0-8cb324a825c4" />
@@ -28,21 +28,8 @@ Encrypted: b'\x9a\xbe\xef\xc1xB\x17\x9d\x80\x88\x110\x04\x84q\xe1'
 
 ---
 
-## 🧩 System Architecture
+## Data flow
 
-```
-┌─────────┐     GPIO     ┌──────────────────┐     Wi-Fi/MQTT     ┌─────────────────────┐
-│  DHT22  │ ──────────►  │                  │ ──────────────────► │   MQTT Broker       │
-│ Sensor  │              │      ESP32       │                     │ test.mosquitto.org  │
-└─────────┘              │                  │                     └─────────────────────┘
-                         │   MicroPython    │
-┌─────────┐     I2C      │                  │
-│ SSD1306 │ ◄──────────  │  AES-256-CBC     │
-│  OLED   │              │  Encryption      │
-└─────────┘              └──────────────────┘
-```
-
-**Data flow:**
 1. DHT22 reads temperature & humidity every 2 seconds
 2. Raw data is padded and encrypted with AES-256-CBC (`ucryptolib`)
 3. Encrypted payload is published to MQTT topic `CRYPT/AES`
@@ -50,7 +37,7 @@ Encrypted: b'\x9a\xbe\xef\xc1xB\x17\x9d\x80\x88\x110\x04\x84q\xe1'
 
 ---
 
-## 🛠️ Hardware
+##  Hardware
 
 | Component | Description |
 |-----------|-------------|
@@ -60,7 +47,7 @@ Encrypted: b'\x9a\xbe\xef\xc1xB\x17\x9d\x80\x88\x110\x04\x84q\xe1'
 
 ---
 
-## 📦 Dependencies
+##  Dependencies
 
 | Library | Purpose |
 |---------|---------|
@@ -72,7 +59,7 @@ Encrypted: b'\x9a\xbe\xef\xc1xB\x17\x9d\x80\x88\x110\x04\x84q\xe1'
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Run on Wokwi (no hardware needed)
 
@@ -97,7 +84,7 @@ iv  = b'your-16-byte-iv-'                  # must be exactly 16 bytes
 
 ---
 
-## 🔒 Security Details
+##  Security Details
 
 | Parameter | Value |
 |-----------|-------|
@@ -107,11 +94,11 @@ iv  = b'your-16-byte-iv-'                  # must be exactly 16 bytes
 | Padding | Space padding to 16-byte block boundary |
 | Library | `ucryptolib` (built-in MicroPython) |
 
-> ⚠️ **Note:** The key and IV are hardcoded for demonstration purposes. In a production system, use secure key exchange and a random IV per message.
+>  **Note:** The key and IV are hardcoded for demonstration purposes. In a production system, use secure key exchange and a random IV per message.
 
 ---
 
-## 📡 MQTT
+##  MQTT
 
 | Parameter | Value |
 |-----------|-------|
@@ -126,7 +113,7 @@ mosquitto_sub -h test.mosquitto.org -t "CRYPT/AES"
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 cryptage-AES/
@@ -138,7 +125,7 @@ cryptage-AES/
 
 ---
 
-## 🎯 What This Project Demonstrates
+##  What This Project Demonstrates
 
 - Symmetric encryption (AES-256-CBC) on a microcontroller
 - Secure IoT data transmission over MQTT
@@ -148,7 +135,7 @@ cryptage-AES/
 
 ---
 
-## 📜 License
+##  License
 
 MIT License — feel free to use, modify, and distribute.
 
