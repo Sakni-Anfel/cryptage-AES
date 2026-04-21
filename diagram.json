@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "author": "Anfel Sakni",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -147, "left": -74, "attrs": {} },
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 76.8,
+      "left": -71.96,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 108.74,
+      "left": 144.23,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -86.1,
+      "left": -226.2,
+      "attrs": { "temperature": "41.9" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.2", "bb1:bn.1", "black", [ "v-38.4", "h-67.2" ] ],
+    [ "oled1:GND", "bb1:bn.20", "black", [ "v-48", "h-76.8" ] ],
+    [ "esp:5V", "bb1:bp.1", "red", [ "h-38.25", "v9.6" ] ],
+    [ "oled1:VCC", "bb1:bp.21", "red", [ "v0" ] ],
+    [ "esp:22", "oled1:SCL", "green", [ "h57.6", "v-28.8", "h-9.6" ] ],
+    [ "esp:21", "oled1:SDA", "green", [ "h67.2", "v67.2", "h153.6", "v-124.8", "h-38.4" ] ],
+    [ "dht1:GND", "bb1:bn.2", "black", [ "v19.2", "h153.6" ] ],
+    [ "dht1:VCC", "bb1:bp.3", "red", [ "v9.6", "h192" ] ],
+    [ "esp:14", "dht1:SDA", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
