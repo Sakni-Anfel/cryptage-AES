@@ -12,7 +12,7 @@ A MicroPython-based IoT project simulated on Wokwi, built around an ESP32 microc
 -OLED display shows:
 Temperature in °C
 Humidity in %
-First 14 hex characters of the encrypted payload
+First 14 hex characters of the encrypted payload .
 -Serial monitor output:
 Input:41.9 40.0
 Using AES256-CTR cipher
@@ -23,3 +23,15 @@ DHT22 reads temperature & humidity every 2 seconds
 Raw data is padded and encrypted with AES-256-CBC (ucryptolib)
 Encrypted payload is published to MQTT topic CRYPT/AES
 OLED displays live sensor values + truncated encrypted hex
+
+-Hardware
+ESP32 DevKitMain: microcontroller (Wi-Fi enabled)
+DHT22 : Temperature & humidity sensor — GPIO 14
+SSD1306 OLED128×64 :  I2C display — SDA: GPIO 21, SCL: GPIO 22
+
+-Dependencies:
+ucryptolib : Built-in MicroPython AES encryption
+umqtt.simple : MQTT client for MicroPython
+ssd1306OLED : driver
+dht : DHT22 sensor driver
+network : Wi-Fi management
