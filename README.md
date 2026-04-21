@@ -141,7 +141,7 @@ MIT License — feel free to use, modify, and distribute.
 
 ---
 
-## 👤 Author
+##  Author
 
 **Anfel Sakni** — Embedded Systems Engineering Student
-🔗 [GitHub](https://github.com/Sakni-Anfel)
+ [GitHub](https://github.com/Sakni-Anfel)
